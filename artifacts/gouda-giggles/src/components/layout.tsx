@@ -230,19 +230,20 @@ function Footer() {
 
 function WhatsAppButton() {
   return (
-    <a
-      href={`https://wa.me/14156366046?text=Hi%20Gouda%20Giggles!%20I%27m%20interested%20in%20ordering%20a%20charcuterie%20board.`}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Chat with Gouda Giggles Charcuterie on WhatsApp - Latham NY"
-      title="Chat with us on WhatsApp"
-      className="fixed bottom-6 left-6 z-50 flex items-center gap-2 bg-[#25D366] text-white shadow-lg rounded-full px-4 py-3 hover:bg-[#20ba58] transition-all duration-200 hover:scale-105 group"
-    >
-      <IconWhatsApp className="w-6 h-6 shrink-0" />
-      <span className="text-sm font-semibold max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap">
-        Chat with us
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 group">
+      <span className="hidden group-hover:flex items-center bg-gray-800 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap">
+        Chat with us on WhatsApp
       </span>
-    </a>
+      <a
+        href="https://wa.me/14156366046?text=Hi%20Gouda%20Giggles!%20I%27m%20interested%20in%20ordering%20a%20charcuterie%20board."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with Gouda Giggles Charcuterie on WhatsApp"
+        className="w-14 h-14 rounded-full bg-[#25D366] text-white shadow-xl flex items-center justify-center hover:bg-[#20ba58] transition-all duration-200 hover:scale-110 hover:shadow-2xl"
+      >
+        <IconWhatsApp className="w-7 h-7" />
+      </a>
+    </div>
   );
 }
 
@@ -255,13 +256,14 @@ function BackToTop() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (!visible) return null;
-
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Back to top"
-      className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center hover:bg-primary/90 transition-all duration-200 hover:scale-110"
+      className={cn(
+        "fixed bottom-24 right-6 z-50 w-11 h-11 rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center hover:bg-primary/90 transition-all duration-200 hover:scale-110",
+        visible ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-4 pointer-events-none"
+      )}
     >
       <ArrowUp className="w-5 h-5" />
     </button>
