@@ -41,8 +41,12 @@ const orderSchema = z.object({
 
 type OrderFormValues = z.infer<typeof orderSchema>;
 
-const SQUARE_APP_ID = import.meta.env.VITE_SQUARE_APP_ID ?? "sandbox-sq0idb-placeholder";
-const SQUARE_LOCATION_ID = import.meta.env.VITE_SQUARE_LOCATION_ID ?? "";
+declare const __SQUARE_APP_ID__: string;
+declare const __SQUARE_LOCATION_ID__: string;
+declare const __SQUARE_ENVIRONMENT__: string;
+
+const SQUARE_APP_ID = __SQUARE_APP_ID__;
+const SQUARE_LOCATION_ID = __SQUARE_LOCATION_ID__;
 
 export default function OrderPage() {
   const [, setLocation] = useLocation();

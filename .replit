@@ -33,3 +33,9 @@ externalPort = 3001
 
 [nix]
 channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+VITE_SQUARE_APP_ID = "from_secret"
+VITE_SQUARE_LOCATION_ID = "from_secret"

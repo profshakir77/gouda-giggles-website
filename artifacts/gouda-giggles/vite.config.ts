@@ -28,6 +28,11 @@ if (!basePath) {
 
 export default defineConfig({
   base: basePath,
+  define: {
+    __SQUARE_APP_ID__: JSON.stringify(process.env.SQUARE_APP_ID ?? ""),
+    __SQUARE_LOCATION_ID__: JSON.stringify(process.env.SQUARE_LOCATION_ID ?? ""),
+    __SQUARE_ENVIRONMENT__: JSON.stringify(process.env.SQUARE_ENVIRONMENT ?? "sandbox"),
+  },
   plugins: [
     react(),
     tailwindcss(),
