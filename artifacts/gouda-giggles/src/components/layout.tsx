@@ -26,12 +26,12 @@ function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+      <div className="container mx-auto px-4 h-24 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <img
             src="/images/logo.png"
             alt="Gouda Giggles Charcuterie"
-            className="h-14 w-auto"
+            className="h-20 w-auto max-w-[220px] object-contain"
           />
         </Link>
 
