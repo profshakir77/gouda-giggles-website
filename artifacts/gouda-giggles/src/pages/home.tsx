@@ -38,7 +38,7 @@ const SERVICES = [
   {
     icon: "🌿",
     title: "Grazing Tables",
-    description: "Stunning tableside spreads for weddings, bridal showers, and large celebrations — a full visual experience your guests will never forget.",
+    description: "Stunning tableside spreads for weddings, bridal showers, and large celebrations - a full visual experience your guests will never forget.",
     href: "/quote",
     cta: "Get a Quote",
     image: "/images/product-4.png",
@@ -127,7 +127,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-primary">What We Create</h2>
-            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">From intimate date nights to 50-person wedding grazing tables — we've got your celebration covered.</p>
+            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">From intimate date nights to 50-person wedding grazing tables - we've got your celebration covered.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {SERVICES.map((s) => (
@@ -238,7 +238,7 @@ export default function Home() {
             <div>
               <h2 className="font-serif text-3xl md:text-5xl font-bold mb-6">Made like your best friend made it.</h2>
               <div className="space-y-6 text-primary-foreground/90">
-                <p>At Gouda Giggles, we believe charcuterie shouldn't just be fancy — it should be fun. Every board is hand-crafted with premium, locally sourced ingredients and a serious sprinkle of joy.</p>
+                <p>At Gouda Giggles, we believe charcuterie shouldn't just be fancy - it should be fun. Every board is hand-crafted with premium, locally sourced ingredients and a serious sprinkle of joy.</p>
                 <ul className="space-y-4">
                   {[
                     "Artisanal cheeses selected for perfect pairings",
@@ -269,7 +269,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-primary">Happy Grazers</h2>
-            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">Don't just take our word for it — here's what our customers are saying.</p>
+            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">Don't just take our word for it - here's what our customers are saying.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {TESTIMONIALS.map((t) => (

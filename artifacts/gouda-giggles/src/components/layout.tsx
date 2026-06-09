@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { useCart } from "@/lib/cart-context";
-import { ShoppingBag, Menu, X, Phone, Mail, MapPin } from "lucide-react";
+import { ShoppingBag, Menu, X, Phone, Mail, MapPin, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -161,10 +161,32 @@ function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-primary/10 text-center text-sm text-secondary-foreground/60">
-          © {new Date().getFullYear()} Gouda Giggles Charcuterie — Latham, NY. All rights reserved.
+          © {new Date().getFullYear()} Gouda Giggles Charcuterie - Latham, NY. All rights reserved.
         </div>
       </div>
     </footer>
+  );
+}
+
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 300);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Back to top"
+      className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center hover:bg-primary/90 transition-all duration-200 hover:scale-110"
+    >
+      <ArrowUp className="w-5 h-5" />
+    </button>
   );
 }
 
@@ -174,6 +196,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main className="flex-1 flex flex-col">{children}</main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }
