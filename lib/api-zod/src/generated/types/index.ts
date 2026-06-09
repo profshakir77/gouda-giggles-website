@@ -12,6 +12,7 @@ export * from './listProductsParams';
 export * from './order';
 export * from './orderInput';
 export * from './orderItem';
+export * from './paymentInput';
 export * from './product';
 export * from './quote';
 export * from './quoteInput';

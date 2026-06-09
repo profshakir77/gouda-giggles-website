@@ -117,6 +117,24 @@ export const GetOrderResponse = zod.object({
 
 
 /**
+ * @summary Process Square payment and create order
+ */
+export const CreatePaymentBody = zod.object({
+  "sourceId": zod.string(),
+  "customerName": zod.string(),
+  "customerEmail": zod.string(),
+  "customerPhone": zod.string(),
+  "eventDate": zod.string(),
+  "deliveryAddress": zod.string(),
+  "specialInstructions": zod.string().nullish(),
+  "items": zod.array(zod.object({
+  "productId": zod.number(),
+  "quantity": zod.number()
+}))
+})
+
+
+/**
  * @summary Submit a catering quote request
  */
 export const CreateQuoteBody = zod.object({

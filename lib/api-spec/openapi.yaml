@@ -133,6 +133,29 @@ paths:
         "404":
           description: Not found
 
+  /payments:
+    post:
+      operationId: createPayment
+      tags: [orders]
+      summary: Process Square payment and create order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaymentInput"
+      responses:
+        "201":
+          description: Payment successful, order created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        "400":
+          description: Validation error
+        "402":
+          description: Payment failed
+
   /quotes:
     post:
       operationId: createQuote
@@ -273,6 +296,29 @@ components:
             $ref: "#/components/schemas/OrderItem"
         createdAt:
           type: string
+
+    PaymentInput:
+      type: object
+      required: [sourceId, customerName, customerEmail, customerPhone, eventDate, deliveryAddress, items]
+      properties:
+        sourceId:
+          type: string
+        customerName:
+          type: string
+        customerEmail:
+          type: string
+        customerPhone:
+          type: string
+        eventDate:
+          type: string
+        deliveryAddress:
+          type: string
+        specialInstructions:
+          type: ["string", "null"]
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/OrderItem"
 
     QuoteInput:
       type: object

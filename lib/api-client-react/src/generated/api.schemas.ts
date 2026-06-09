@@ -54,6 +54,18 @@ export interface Order {
   createdAt: string;
 }
 
+export interface PaymentInput {
+  sourceId: string;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  eventDate: string;
+  deliveryAddress: string;
+  /** @nullable */
+  specialInstructions?: string | null;
+  items: OrderItem[];
+}
+
 export interface QuoteInput {
   name: string;
   email: string;
