@@ -1,0 +1,16 @@
+{
+  "buildCommand": "pnpm install && pnpm --filter @workspace/gouda-giggles run build",
+  "outputDirectory": "artifacts/gouda-giggles/dist/public",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "rewrites": [
+    { "source": "/api/products/featured", "destination": "/api/products/featured" },
+    { "source": "/api/products/:id", "destination": "/api/products/[id]" },
+    { "source": "/api/products", "destination": "/api/products/index" },
+    { "source": "/api/payments", "destination": "/api/payments/index" },
+    { "source": "/api/orders/:id", "destination": "/api/orders/[id]" },
+    { "source": "/api/orders", "destination": "/api/orders/index" },
+    { "source": "/api/health", "destination": "/api/health" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
+}
