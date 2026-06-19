@@ -1,6 +1,6 @@
 {
-  "buildCommand": "pnpm install && pnpm --filter @workspace/gouda-giggles run build",
-  "outputDirectory": "artifacts/gouda-giggles/dist/public",
+  "buildCommand": "pnpm --filter @workspace/gouda-giggles run build && cp -r artifacts/gouda-giggles/dist/public ./public",
+  "outputDirectory": "public",
   "installCommand": "pnpm install --no-frozen-lockfile",
   "framework": null,
   "rewrites": [
