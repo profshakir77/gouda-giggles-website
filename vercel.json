@@ -1,8 +1,12 @@
 {
-  "buildCommand": "pnpm --filter @workspace/gouda-giggles run build && cp -r artifacts/gouda-giggles/dist/public ./public",
-  "outputDirectory": "public",
+  "buildCommand": "pnpm --filter @workspace/gouda-giggles run build",
+  "outputDirectory": "artifacts/gouda-giggles/dist/public",
   "installCommand": "pnpm install --no-frozen-lockfile",
   "framework": null,
+  "env": {
+    "BASE_PATH": "/",
+    "PORT": "3000"
+  },
   "rewrites": [
     { "source": "/api/products/featured", "destination": "/api/products/featured" },
     { "source": "/api/products/:id", "destination": "/api/products/[id]" },
