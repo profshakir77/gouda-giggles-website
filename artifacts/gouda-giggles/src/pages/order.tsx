@@ -78,17 +78,26 @@ export default function OrderPage() {
     let mounted = true;
 
     async function loadSquareScript(): Promise<void> {
+      // Remove any Square script loaded from the wrong URL (e.g. production vs sandbox)
+      const wrongScript = document.querySelector(`script[src*="squarecdn.com"]:not([src="${SQUARE_JS_URL}"])`);
+      if (wrongScript) {
+        wrongScript.remove();
+        delete (window as { Square?: unknown }).Square;
+      }
+
       if (window.Square) return;
+
       return new Promise((resolve, reject) => {
         const existing = document.querySelector(`script[src="${SQUARE_JS_URL}"]`);
         if (existing) {
+          // Script already injected — wait for it if still loading
+          if (window.Square) { resolve(); return; }
           existing.addEventListener("load", () => resolve());
           existing.addEventListener("error", reject);
           return;
         }
         const script = document.createElement("script");
         script.src = SQUARE_JS_URL;
-        script.async = true;
         script.onload = () => resolve();
         script.onerror = reject;
         document.head.appendChild(script);
