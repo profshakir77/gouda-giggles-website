@@ -111,8 +111,13 @@ export default function OrderPage() {
     return () => { mounted = false; };
   }, [items.length]);
 
+  useEffect(() => {
+    if (items.length === 0) {
+      setLocation("/cart");
+    }
+  }, [items.length, setLocation]);
+
   if (items.length === 0) {
-    setLocation("/cart");
     return null;
   }
 
