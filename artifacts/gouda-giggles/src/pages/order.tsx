@@ -45,8 +45,12 @@ declare const __SQUARE_APP_ID__: string;
 declare const __SQUARE_LOCATION_ID__: string;
 declare const __SQUARE_ENVIRONMENT__: string;
 
-const SQUARE_APP_ID = __SQUARE_APP_ID__;
-const SQUARE_LOCATION_ID = __SQUARE_LOCATION_ID__;
+const SQUARE_APP_ID = __SQUARE_APP_ID__.trim();
+const SQUARE_LOCATION_ID = __SQUARE_LOCATION_ID__.trim();
+const SQUARE_ENVIRONMENT = __SQUARE_ENVIRONMENT__.trim();
+const SQUARE_JS_URL = SQUARE_ENVIRONMENT === "production"
+  ? "https://web.squarecdn.com/v1/square.js"
+  : "https://sandbox.web.squarecdn.com/v1/square.js";
 
 export default function OrderPage() {
   const [, setLocation] = useLocation();
@@ -76,14 +80,14 @@ export default function OrderPage() {
     async function loadSquareScript(): Promise<void> {
       if (window.Square) return;
       return new Promise((resolve, reject) => {
-        const existing = document.querySelector('script[src*="squarecdn.com"]');
+        const existing = document.querySelector(`script[src="${SQUARE_JS_URL}"]`);
         if (existing) {
           existing.addEventListener("load", () => resolve());
           existing.addEventListener("error", reject);
           return;
         }
         const script = document.createElement("script");
-        script.src = "https://web.squarecdn.com/v1/square.js";
+        script.src = SQUARE_JS_URL;
         script.async = true;
         script.onload = () => resolve();
         script.onerror = reject;
